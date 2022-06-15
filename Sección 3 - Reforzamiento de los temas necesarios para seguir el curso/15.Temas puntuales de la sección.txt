@@ -1,0 +1,8 @@
+Temas de la sección:
+La sección se enfoca en los siguientes temas:
+
+1.Instalación de paquetes mediante npm
+2.Reforzamiento de ES6 y ES7
+    2.1.Let vs Var
+    2.2.Template literales
+    2.3.Destructuración

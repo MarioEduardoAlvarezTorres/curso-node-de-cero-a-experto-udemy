@@ -1,0 +1,8 @@
+Temas de la sección:
+La sección se enfoca en los siguientes temas:
+
+    1.Requerir información de otros archivos
+    2.Requerir paquetes
+    3.Importar archivos personalizados
+    4.NPM
+        4.1Install

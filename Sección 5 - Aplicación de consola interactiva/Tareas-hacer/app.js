@@ -1,4 +1,5 @@
 import colors from 'colors';
+import { guardarDB } from './helpers/guardarArchivo.js';
 import { inquirerMenu,pausa,leerInput } from './helpers/inquirer.js';
 import  {Tareas} from './models/tareas.js';
 console.clear();
@@ -29,6 +30,8 @@ const main = async() =>{
             default:
                 break;
         }
+
+        //guardarDB(tareas.listadoArr);
         await pausa();
     } while (opt != '0');
 }

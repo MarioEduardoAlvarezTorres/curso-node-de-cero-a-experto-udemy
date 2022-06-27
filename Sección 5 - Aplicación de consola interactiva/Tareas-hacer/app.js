@@ -4,10 +4,9 @@ import { inquirerMenu,pausa,leerInput } from './helpers/inquirer.js';
 import  {Tareas} from './models/tareas.js';
 console.clear();
 const main = async() =>{
-    //console.log("Hola mundo");
     let opt = '';
     const tareas = new Tareas();
-    //LEER DB
+    //LEER DB DE ARCHIVO "GUARDARARCHIVO.JS"
     const tareasDB = leerDB();
     if (tareasDB){
         tareas.cargarTareasFromArray(tareasDB);
@@ -23,7 +22,7 @@ const main = async() =>{
             break;
                 
             case '2':
-                console.log(tareas.listadoArr)   
+                tareas.listadoCompleto();
             break;
             
             case '3':  

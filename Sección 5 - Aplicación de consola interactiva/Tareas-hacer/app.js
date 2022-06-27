@@ -1,6 +1,6 @@
 import colors from 'colors';
 import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
-import { confirmar,inquirerMenu,pausa,leerInput,listadoTareasBorrar} from './helpers/inquirer.js';
+import { confirmar,inquirerMenu,pausa,leerInput,listadoTareasBorrar,mostrarListadoChecklist} from './helpers/inquirer.js';
 import  {Tareas} from './models/tareas.js';
 console.clear();
 const main = async() =>{
@@ -31,6 +31,11 @@ const main = async() =>{
             
             case '4':
                 tareas.listarPedientesCompletos(false); 
+            break;
+
+            case '5':
+                const ids = await mostrarListadoChecklist(tareas.listadoArr);
+                console.log(ids);
             break;
             
             case '6':

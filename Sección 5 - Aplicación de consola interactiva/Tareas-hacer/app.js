@@ -10,9 +10,8 @@ const main = async() =>{
     //LEER DB
     const tareasDB = leerDB();
     if (tareasDB){
-
+        tareas.cargarTareasFromArray(tareasDB);
     }
-    await pausa();
     do {
         //IMPRIME EL MENU
         opt= await inquirerMenu();
@@ -37,7 +36,7 @@ const main = async() =>{
                 break;
         }
 
-        //guardarDB(tareas.listadoArr);
+        guardarDB(tareas.listadoArr);
         await pausa();
     } while (opt != '0');
 }

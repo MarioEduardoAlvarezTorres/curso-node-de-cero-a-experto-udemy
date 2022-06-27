@@ -11,10 +11,8 @@ export const leerDB = () =>{
     }
 
     const info = fs.readFileSync(archivo,{encoding: 'utf-8'})
-    console.log(info);
     const data = JSON.parse(info);
     //HACE LO CONTRARIO AL JSON ANTERIOR (LO PASA A STRING)
-    console.log(data)
     
-    return null;
+    return data;
 }

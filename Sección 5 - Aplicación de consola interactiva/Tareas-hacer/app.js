@@ -25,10 +25,12 @@ const main = async() =>{
                 tareas.listadoCompleto();
             break;
             
-            case '3':  
+            case '3': 
+                tareas.listarPedientesCompletos(true); 
             break;
             
             case '4':
+                tareas.listarPedientesCompletos(false); 
             break;
         
             default:

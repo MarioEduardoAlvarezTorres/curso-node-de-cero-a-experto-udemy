@@ -24,7 +24,6 @@ class Tareas {
     }
     
     listadoCompleto(){
-        let lista= 
         this.listadoArr.forEach((tarea,i) => {
             const idx = `${i+1}`.magenta;
             const {desc,completadoEn} = tarea;
@@ -33,6 +32,30 @@ class Tareas {
                 : 'Pendiente'.red;
             console.log(idx , desc ,"::", estado)
         });
+    }
+
+    listarPedientesCompletos(completadas = true){
+        let contador = 0;
+        this.listadoArr.forEach((tarea) => {
+            const {desc,completadoEn} = tarea;
+            const estado = (completadoEn)
+                ? 'Completada'.green
+                : 'Pendiente'.red;
+            if(completadas === true && completadoEn!==null){
+                contador++;
+                console.log(`${contador}`.magenta , desc ,"::", estado)
+            }
+                
+                
+            if(completadas === false && completadoEn===null){
+                contador++;
+                console.log(`${contador}`.magenta , desc ,"::", estado)
+            }
+        });
+    }
+
+    listarPendientes(){
+
     }
 }
 

@@ -1,6 +1,6 @@
 import colors from 'colors';
 import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
-import { inquirerMenu,pausa,leerInput,listadoTareasBorrar} from './helpers/inquirer.js';
+import { confirmar,inquirerMenu,pausa,leerInput,listadoTareasBorrar} from './helpers/inquirer.js';
 import  {Tareas} from './models/tareas.js';
 console.clear();
 const main = async() =>{
@@ -35,7 +35,13 @@ const main = async() =>{
             
             case '6':
                 const id =  await listadoTareasBorrar(tareas.listadoArr);
-                console.log({id})
+                if( id !== '0'){
+                    const ok = await confirmar('¿Está Seguro?')
+                    if (ok){
+                        tareas.borrarTarea(id);
+                        console.log("Se borró exitosamente")
+                    }    
+                }
             break;
         
             default:

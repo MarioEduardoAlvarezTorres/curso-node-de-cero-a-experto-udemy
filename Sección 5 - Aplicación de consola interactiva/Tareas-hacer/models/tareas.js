@@ -55,8 +55,8 @@ class Tareas {
     //5.COMPLETAR TAREAS
     //6.BORRAR TAREAS
     borrarTarea(id=""){
-        if(this._listado(id)){
-            delete this._listado(id);
+        if(this._listado[id]){
+            delete this._listado[id];
         }
     }
 }

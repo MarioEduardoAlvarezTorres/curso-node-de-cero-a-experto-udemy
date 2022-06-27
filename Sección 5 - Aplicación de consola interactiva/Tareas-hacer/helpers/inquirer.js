@@ -71,6 +71,11 @@ const listadoTareasBorrar = async (tareas = []) =>{
             value:tarea.id,
             name:`${idx} ${tarea.desc}`
         } 
+    });
+
+    choices.unshift({
+        value:'0',
+        name: '0.'.magenta + 'Cancelar'
     })
     const preguntas = [
         {
@@ -83,4 +88,16 @@ const listadoTareasBorrar = async (tareas = []) =>{
     const {id} = await inquirer.prompt(preguntas);
     return id;
 }
-export {inquirerMenu,pausa,leerInput,listadoTareasBorrar}
+
+const confirmar = async (message) =>{
+    const question=[
+        {
+            type: 'confirm',
+            name:'ok',
+            message
+        }
+    ];
+    const {ok} = await inquirer.prompt(question);
+    return ok;
+} 
+export {inquirerMenu,pausa,leerInput,listadoTareasBorrar,confirmar}

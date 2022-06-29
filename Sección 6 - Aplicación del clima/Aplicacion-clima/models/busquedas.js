@@ -1,6 +1,8 @@
+import fs from "fs";
 import axios from "axios";
 export class Busquedas {
-    historial = ['Mexico','España']
+    historial = []
+    dbPath = "./db/database.json"
     constructor(){
         //TODO leer DB si existe
     }
@@ -64,5 +66,26 @@ export class Busquedas {
             console.log(error);
             
         }
+    }
+
+    agregarHistorial(lugar =''){
+        if(this.historial.includes(lugar.toLocaleLowerCase)){
+            return;
+        }
+        this.historial.unshift(lugar);
+        //Grabar en DB
+        this.guardarDB();
+
+    }
+
+    guardarDB(){
+        const payload = {
+            historial:this.historial
+        }
+        fs.writeFileSync(this.dbPath,JSON.stringify(payload));
+    }
+
+    leerDB(){
+
     }
 }

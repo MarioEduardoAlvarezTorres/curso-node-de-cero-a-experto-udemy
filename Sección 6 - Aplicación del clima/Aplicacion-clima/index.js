@@ -19,7 +19,11 @@ const main = async()=>{
                 const lugares = await busquedas.ciudad(terminodeBusqueda);
                 //Seleccionar el lugar
                 const id = await listarLugares(lugares);
+                //En casdo de que se de cancelar
+                if(id === '0') continue;
                 const lugarSet = lugares.find(l => l.id === id)
+                //Guardar en DB
+                busquedas.agregarHistorial(lugarSet.nombre);
                 //Clima
                 const clima = await busquedas.climaLugar(lugarSet.lat,lugarSet.lng)
                 //Mostrar resultados
@@ -35,7 +39,10 @@ const main = async()=>{
             break;
                 
             case 2:
-                console.log("Estamos en el Dos");
+                busquedas.historial.forEach((lugar,i)=>{
+                    const idx = `${i+1}.`.magenta
+                    console.log(`${idx} ${lugar}`)
+                })
             break;
             
             case 0: 

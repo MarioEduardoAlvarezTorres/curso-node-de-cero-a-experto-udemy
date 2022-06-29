@@ -4,11 +4,21 @@ export class Busquedas {
     constructor(){
         //TODO leer DB si existe
     }
+    get paramsMapbox(){
+        return{
+            'access_token':'pk.eyJ1IjoibWFyaW9lZHVhcmRvIiwiYSI6ImNsNHhvbGkyczFxdm8zZW9iMm12c3VoaGEifQ.G5VzUnnwlD9su-T4FgchpQ',
+            'limit':5,
+            'language':'es'
+        }
+    }
     async ciudad(lugar = ''){
         try {
-            //peticion http
-            //console.log('Ciudad: ',lugar);
-            const resp = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/mexico.json?proximity=ip&types=place%2Cpostcode%2Caddress&language=es&access_token=pk.eyJ1IjoibWFyaW9lZHVhcmRvIiwiYSI6ImNsNHhvbGkyczFxdm8zZW9iMm12c3VoaGEifQ.G5VzUnnwlD9su-T4FgchpQ')
+            //Peticion http
+            const instance = axios.create({
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json`,
+                params:this.paramsMapbox
+            })
+            const resp = await instance.get();
             console.log(resp.data);
 
             return [];

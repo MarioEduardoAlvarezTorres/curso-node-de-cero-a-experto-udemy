@@ -1,5 +1,4 @@
 const {Schema,model} = require("mongoose");
-const { required, boolean } = require("yargs");
 const UsuarioSchema = Schema({
     nombre:{
         type: String,
@@ -23,11 +22,11 @@ const UsuarioSchema = Schema({
         emun:['ADMIN_ROLE','USER_ROLE']
     },
     estado:{
-        type: Boolean,
+        type:Boolean,
         default:true
     },
     google:{
-        type:boolean,
+        type:Boolean,
         default:false
     }
 });

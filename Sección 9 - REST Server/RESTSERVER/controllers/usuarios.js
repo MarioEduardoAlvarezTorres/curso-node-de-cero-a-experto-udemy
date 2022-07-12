@@ -58,11 +58,13 @@ const usuariosPatch = (req, res = response) => {
     });
 }
 
-const usuariosDelete = (req, res = response) => {
-    
-    res.json({
-        msg: 'delete API - usuariosDelete'
-    });
+const usuariosDelete = async (req, res = response) => {
+    const {id} = req.params;
+    //FISICAMENTE LO BORRAMOS
+    //const usuario = await Usuario.findByIdAndDelete(id)
+
+    const usuario =  await Usuario.findByIdAndUpdate(id,{estado:false})
+    res.json(usuario);
 }
 
 

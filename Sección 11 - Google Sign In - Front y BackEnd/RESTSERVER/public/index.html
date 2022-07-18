@@ -25,6 +25,9 @@
 
         <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+        <button id="google_signout">
+            SignOut
+        </button>
         <script>
             function handleCredentialResponse(response) {
                 //GOOGLE TOKEN
@@ -40,9 +43,23 @@
                     .then(resp => resp.json())
                     .then(resp => {
                         console.log(resp)
+                        localStorage.setItem('email', resp.usuario.correo )
                     })
                     .catch(console.warn)
             }
+
+            const button = document.getElementById('google_signout')
+            button.onclick = async() => {
+
+            console.log(google.accounts.id)
+            google.accounts.id.disableAutoSelect()
+            google.accounts.id.revoke(localStorage.getItem('email'), done => {
+                console.log('consent revoked');
+                localStorage.clear()
+                location.reload()
+            });
+            }
+
         </script>
 </body>
 </html>

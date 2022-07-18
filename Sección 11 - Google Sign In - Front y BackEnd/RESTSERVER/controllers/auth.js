@@ -46,12 +46,38 @@ const googleSingIn = async (req,res = response) =>{
 
     try {
         const {nombre,img,correo} = await verify(id_token) 
-            res.json({
-            msg:'Todo bien',
-            id_token
+        let usuario = await Usuario.findOne({correo});
+        if(!usuario){
+            //SE CREA USUARIO
+            const data = {
+                nombre,
+                correo,
+                password: ";P",
+                img,
+                rol: "USER_ROLE",
+                google: true,
+            };
+
+            usuario = new Usuario(data);
+            await usuario.save();
+        }
+
+        //SI EL USUARIO DE DB
+        if(!usuario.estado){
+            return res.status(401).json({
+                msg:"Hable con el admon, usuario bloqueado"
+            })
+        }
+        //GENERAR EL JWT
+        const token = await generarJWT(usuario.id)
+        res.json({
+            usuario,
+            token
         })
+
+
     } catch (error) {
-        json.status(400).json({
+        res.status(400).json({
             ok:false,
             msg:"El token no se pudo verificar"
         })

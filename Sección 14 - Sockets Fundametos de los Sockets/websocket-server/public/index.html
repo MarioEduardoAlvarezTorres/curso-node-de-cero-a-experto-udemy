@@ -10,27 +10,32 @@
 
 </head>
 <body class="container">
-    <h1 class="mt-2">Socket Client</h1>
-    <hr>
-    <p>
-        Server Status: 
-        <span id="lblOnline" class="text-success">Online</span>
-        <span id="lblOffline" class="text-danger">Offline</span>
-    </p>
-
+    <h1 class="mt-5">Programa de Colas</h1>
 
     <div class="row">
-        <div class="col">
-            <input type="text" id="txtMensaje" class="form-control">
+        <div class="col-6">
+
+            <a class="btn btn-primary" href="publico.html">Pantalla publica</a>
+            <a class="btn btn-secondary" href="nuevo-ticket.html">Crear Tickets</a>
+
         </div>
-        <div class="col">
-            <button id="btnEnviar" class="btn btn-primary">
-                Enviar
-            </button>
+
+        <div class="col-6">
+            <form action="escritorio.html">
+
+                <input name="escritorio" 
+                       type="text" 
+                       class="form-control" 
+                       placeholder="Escritorio" 
+                       autofocus 
+                       required>
+
+                <br>
+                <button type="submit" class="btn btn-primary">
+                    Ingresar
+                </button>
+            </form>
         </div>
     </div>
-    
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="./js/socket-client.js"></script>
 </body>
 </html>
